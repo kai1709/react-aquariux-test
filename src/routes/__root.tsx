@@ -1,16 +1,11 @@
-import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
+import { createRootRoute, Outlet } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
-import { MapPin } from 'lucide-react'
+import Header from 'components/Header'
 
 export const Route = createRootRoute({
   component: () => (
     <>
-      <div className="flex items-center justify-center">
-        <div className="flex w-[600px]">
-          <MapPin />
-        </div>
-      </div>
-      <hr />
+      <Header />
       <Outlet />
       <TanStackRouterDevtools />
     </>
