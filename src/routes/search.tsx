@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import { Button, Card, Form, FormProps, Input } from 'antd'
 import { searchCity } from 'api'
-import { Delete, Search, Trash } from 'lucide-react'
+import { Search, Trash } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { useWeatherStore } from 'store'
 import * as CryptoJS from 'crypto-js'
@@ -75,12 +75,16 @@ function RouteComponent() {
   useEffect(() => {
     const historyLocalStorage = localStorage.getItem('history')
     if (historyLocalStorage) {
-      const decryptedHistory = CryptoJS.AES.decrypt(
-        historyLocalStorage,
-        CRYPTO_KEY
-      ).toString(CryptoJS.enc.Utf8)
-      const historyArrayData = JSON.parse(decryptedHistory)
-      setHistory(historyArrayData)
+      try {
+        const decryptedHistory = CryptoJS.AES.decrypt(
+          historyLocalStorage,
+          CRYPTO_KEY
+        ).toString(CryptoJS.enc.Utf8)
+        const historyArrayData = JSON.parse(decryptedHistory)
+        setHistory(historyArrayData)
+      } catch (e) {
+        console.error(e)
+      }
     }
   }, [])
 

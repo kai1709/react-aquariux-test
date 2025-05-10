@@ -31,15 +31,7 @@ yarn typecheck
 yarn build
 ```
 
-### Test
-
-```bash
-yarn test
-```
-
-View and interact with your tests via UI.
-
-```bash
-yarn test:ui
-```
-
+### Enviroment
+Please provide these ENV variables to .env
+- VITE_API_KEY
+- VITE_CRYPTO_KEY
