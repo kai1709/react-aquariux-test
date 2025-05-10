@@ -1,7 +1,12 @@
 import { Location } from 'types'
 import { create } from 'zustand'
 
-export const useWeatherStore = create((set) => ({
+type State = {
+  location: Location | null
+  setLocation: (location: Location) => void
+}
+
+export const useWeatherStore = create<State>((set) => ({
   location: null,
   setLocation: (newLocation: Location) => set({ location: newLocation })
 }))
